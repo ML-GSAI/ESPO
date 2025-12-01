@@ -1,0 +1,67 @@
+# Model arguments
+model_name_or_path: GSAI-ML/LLaDA-8B-Instruct
+torch_dtype: bfloat16
+trust_remote_code: true
+
+use_peft: true
+lora_r: 128
+lora_alpha: 64
+lora_dropout: 0.05
+peft_task_type: CAUSAL_LM
+lora_target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "up_proj", "down_proj", "gate_proj"]
+
+
+# GRPO trainer config
+sync_ref_model: True
+ref_model_sync_steps: 64
+beta: 0.01
+epsilon: 0.2
+scale_rewards: false
+bf16: true
+use_vllm: false
+do_eval: false
+num_generations: 10
+num_iterations: 2
+per_device_eval_batch_size: 1
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 5
+gradient_checkpointing: false
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+
+learning_rate: 1.0e-06
+adam_beta1: 0.9
+adam_beta2: 0.99
+weight_decay: 0.1
+max_grad_norm: 0.2
+log_completions: true
+log_level: info
+logging_first_step: true
+logging_steps: 10
+logging_strategy: steps
+lr_scheduler_type: cosine_with_min_lr
+lr_scheduler_kwargs:
+  min_lr_rate: 0.1
+num_train_epochs: 1
+output_dir: /home/ubuntu/jianwen-us-south-2/jiaqi/output/test
+overwrite_output_dir: true
+e2b_router_url: 0.0.0.0:8000
+
+## generation config
+max_prompt_length: 400
+max_completion_length: 256
+random_masking: True
+diffusion_steps: 256
+generation_batch_size: 10
+generation_temperature: 1.0
+num_mc: 1
+reduce_var: true
+
+report_to:
+- wandb
+wandb_project: "espo"
+save_strategy: "steps"
+save_steps: 500
+save_total_limit: 40
+seed: 42
+warmup_ratio: 0.0001
