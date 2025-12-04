@@ -1,5 +1,5 @@
 # Principled RL for Diffusion LLMs Emerges from a Sequence-Level Perspective
-<!-- [![arXiv](https://img.shields.io/badge/Paper-arXiv-red.svg)](https://arxiv.org/abs/2502.09992) -->
+[![arXiv](https://img.shields.io/badge/Paper-arXiv-red.svg)](https://arxiv.org/abs/2512.03759)
 [![deploy](https://img.shields.io/badge/Hugging%20Face-ESPO-FFEB3B)](https://huggingface.co/collections/GSAI-ML/espo)
 
 ---
