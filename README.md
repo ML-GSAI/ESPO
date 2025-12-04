@@ -1,7 +1,7 @@
 # Principled RL for Diffusion LLMs Emerges from a Sequence-Level Perspective
 [![arXiv](https://img.shields.io/badge/Paper-arXiv-red.svg)](https://arxiv.org/abs/2512.03759)
 [![deploy](https://img.shields.io/badge/Hugging%20Face-ESPO-FFEB3B)](https://huggingface.co/collections/GSAI-ML/espo)
-
+[![Project Page](https://img.shields.io/badge/Project-Page-4b44ce.svg)](https://jingyangou.github.io/ESPO-Demo/)
 ---
 ## Introduction
 
@@ -144,5 +144,15 @@ We thank the following open-source efforts:
 - Models: [LLaDA](https://github.com/ML-GSAI/LLaDA), [Dream](https://github.com/HKUNLP/Dream)
 - RL/eval codebases: [d1](https://github.com/dllm-reasoning/d1), [Diffu-coder](https://github.com/apple/ml-diffuCoder), [Open-R1](https://github.com/huggingface/open-r1), [Opencompass](https://github.com/open-compass/opencompass)
 
-<!-- ## Citation
-TODO: -->
+## Citation
+If you find ESPO useful in your research, please consider to cite our paper:
+
+
+```bibtex
+@article{ou2025principledrldiffusionllms,
+      title={Principled RL for Diffusion LLMs Emerges from a Sequence-Level Perspective}, 
+      author={Jingyang Ou and Jiaqi Han and Minkai Xu and Shaoxuan Xu and Jianwen Xie and Stefano Ermon and Yi Wu and Chongxuan Li},
+      journal={arXiv preprint arXiv:2512.03759},
+      year={2025},
+}
+```
