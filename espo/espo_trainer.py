@@ -492,6 +492,19 @@ class ESPOTrainer(GRPOTrainer):
     def _prepare_inputs(
         self, accumulated_local_batch: dict[str, Union[torch.Tensor, Any]]
     ) -> dict[str, Union[torch.Tensor, Any]]:
+
+        # Prepares inputs for model training/evaluation by managing completion generation and batch handling.
+        # During training:
+        #   - Receives the accumulated local batch (Per-GPU batch size × Gradient accumulation steps)
+        #     from the modified training dataloader instead of the standard local batch  (Detailed in `GRPOTrainer`'s `_get_train_sampler` method, see comments there)
+        #   - Generates completions once for the entire accumulated batch and splits it into smaller batches
+        #   - Buffers these completions and returns the appropriate slice for the current accumulation step
+        #   - Optimizes by regenerating completions only periodically (every gradient_accumulation_steps * num_iterations)
+        # During evaluation:
+        #   - The input is treated as a standard local batch (no accumulation, no multiple iterations)
+        #   - Completions are generated for each batch without buffering or reuse
+        # Returns a single local batch in both cases.
+
         mode = "train" if self.model.training else "eval"
         if mode == "train":
             generate_every = self.args.gradient_accumulation_steps * self.num_iterations
