@@ -518,7 +518,7 @@ class ESPOTrainer(GRPOTrainer):
             self._step += 1
         else:
             # In evaluation, we don't reuse completions across multiple updates, so we don't need to buffer inputs.
-            inputs = self._generate_and_score_completions(inputs)
+            inputs = self._generate_and_score_completions(accumulated_local_batch)
         return inputs
 
     def _generate_and_score_completions(
